@@ -214,7 +214,7 @@ namespace Hangman
             int wordBankIndex = random.Next(wordBank.Count);
 
             //created string to wordBank index selection and to ensure all entries print to lower case along with replacing char space with an underscore
-            String surpriseWord = wordBank[wordBankIndex].ToLower().Replace(' ', '_');
+            String surpriseWord = wordBank[wordBankIndex].ToUpper().Replace(' ', '_');
 
             foreach (char c in surpriseWord)
             {
@@ -245,7 +245,8 @@ namespace Hangman
                  }*/
 
                 Console.Write("\nGuess a letter: ");
-                char letterDisplay = Console.ReadLine()[0];
+                char letterDisplay = Console.ReadLine().ToUpper()[0];
+                
                 if (correctGuess.Contains(letterDisplay))
                 {
 
@@ -279,7 +280,7 @@ namespace Hangman
                         ///Congratulates the user the game has concluded when teh correct guesses equals the correct word length
                         if (correctGuessLetters == wordLengthToGuess)
                         {
-                            Console.Write("\r\nExcellent job, You WON!!!");
+                            Console.Write("\r\nExcellent job, You WON!!!\n");
                         }
 
                     }
@@ -303,7 +304,7 @@ namespace Hangman
                 }
 
             }
-            Console.Write("\r\nPlease Play again!\nPress any key to continue...\n");
+            Console.WriteLine("\nPlease Play again!\nPress any key to continue...\n");
             //pauses the program upon completion without directly exiting the screen
             Console.ReadKey();
 
