@@ -296,14 +296,16 @@ namespace Hangman
                         if (wrongGuess == 6)
                         {
                             string endingString = surpriseWord.Replace('_', ' ').ToUpper();
-                            Console.Write($"\r\nGame over - Better luck next time. Your word was {endingString}!");
+                            Console.Write($"\r\nGame over - Better luck next time. Your word was {endingString}!\n");
                         }
                     }
 
                 }
 
             }
-            Console.WriteLine("\r\nPlease Play again!");
+            Console.Write("\r\nPlease Play again!\nPress any key to continue...\n");
+            //pauses the program upon completion without directly exiting the screen
+            Console.ReadKey();
 
         }
     }
