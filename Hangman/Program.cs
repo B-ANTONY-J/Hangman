@@ -110,6 +110,7 @@ namespace Hangman
                 //the first conditional statement iterates past a character space or character hyphen within the string
                 if (c == '_' || c == '-')
                 {
+
                     correctGuess++;
 
                 }
@@ -139,6 +140,7 @@ namespace Hangman
                 //easier to use unicode to display lines on the next returned line at the top below the above words displayed from the loop method than just using an underscore character
                 Console.OutputEncoding = System.Text.Encoding.Unicode;
                 Console.Write("\u0305 ");
+
             }
         }
         static void Main(string[] args)
@@ -177,16 +179,16 @@ namespace Hangman
                     "                                                                     \n" +
                     "                                                                     \n" +
                     "                            d88O88b    \n" +
-                    "                            b8P  P8b  \n" +
-                    "                            88    88   \n" +
-                    "                            8888bd8Y d88       888 \n" +
-                    "                            888b8b.   d8P     88b \n" +
-                    "                            888  88b   888   888 \n" +
-                    "                            888  d888   Y8b 88  \n" +
-                    "                            888bd888Y    YY88   \n" +
-                    "                                        888  \n" +
-                    "                                       888  \n" +
-                    "                                      88b\n" + "                                                                     \n" +
+                    "                            bY0  0Yb  \n" +
+                    "                            880  088   \n" +
+                    "                            880VV0D d880      8888 \n" +
+                    "                            888b888b. d8P0   888b \n" +
+                    "                            88b  d88b  8880 8888 \n" +
+                    "                            88b  d888   Y8bd888  \n" +
+                    "                            888bd888Y   YY888   \n" +
+                    "                                       88888  \n" +
+                    "                                      8888b \n" +
+                    "                                     888b\n" + "                                                                     \n" +
                     "                                                                     \n" +
                     "                                                                     \n" +
                     "                                                                     \n" +
@@ -226,8 +228,6 @@ namespace Hangman
             //create a list to keep track of correct letters guessed
             List<char> correctGuess = new List<char>();
             int correctGuessLetters = 0;
-            //var replacement = surpriseWord.Replace(' ', ' ');
-            //end game
 
 
             //while loop to initiate game play until correct guess or exceeded 6 attempts
@@ -239,14 +239,9 @@ namespace Hangman
                     Console.Write(correct + " ");
                 }
 
-                /* if (correctGuessLetters == wordLengthToGuess)
-                 {
-                     Console.WriteLine("\r\nExcelent job, You WON!!!\n");
-                 }*/
-
                 Console.Write("\nGuess a letter: ");
                 char letterDisplay = Console.ReadLine().ToUpper()[0];
-                
+
                 if (correctGuess.Contains(letterDisplay))
                 {
 
