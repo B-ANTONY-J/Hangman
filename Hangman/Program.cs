@@ -191,8 +191,7 @@ namespace Hangman
                     "                                     888b\n" + "                                                                     \n" +
                     "                                                                     \n" +
                     "                                                                     \n" +
-                    "                                                                     \n" +
-                    "                                                                     \n" +
+        
                     "         88888b.d88b.  source code: https://github.com/B-ANTONY-J/Hangman.git\n" +
                     "         b888  888  88b  8888b.  88888b. .d88b.      888  .d8888888b.  8888b.    \n" +
                     "         b888  888  88b      88b 888  88b  d88P     88b8  b88    888b. 8888b      \n" +
