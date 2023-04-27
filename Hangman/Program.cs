@@ -140,7 +140,10 @@ namespace Hangman
                 //easier to use unicode to display lines on the next returned line at the top below the above words displayed from the loop method than just using an underscore character
                 Console.OutputEncoding = System.Text.Encoding.Unicode;
                 Console.Write("\u0305 ");
+                if (c == ' ')
+                {
 
+                }
             }
         }
         static void Main(string[] args)
@@ -192,14 +195,14 @@ namespace Hangman
                     "                                                                     \n" +
                     "                                                                     \n" +
         
-                    "         88888b.d88b.  source code: https://github.com/B-ANTONY-J/Hangman.git\n" +
-                    "         b888  888  88b  8888b.  88888b. .d88b.      888  .d8888888b.  8888b.    \n" +
-                    "         b888  888  88b      88b 888  88b  d88P     88b8  b88    888b. 8888b      \n" +
-                    "         8888  888  888 .d888888 888  888   8888   8888   8880b.d888.  8888b  8888 \n" +
-                    "         8888  888  888 888  888 888         Y88b 8888    888          8888b  8888\n" +
-                    "         8888  888  888  Y888888 888          Y88888      8888888888b  8888b888888\n" +
-                    "                                                                                       \n" +
-                    "                                  By The Avengers: End Game\n");
+                    "           88888b.d88b.  source code: https://github.com/B-ANTONY-J/Hangman.git\n" +
+                    "           b888  888  88b  8888b.  88888b. .d88b.      888  .d8888888b.  8888b.    \n" +
+                    "           b888  888  88b      88b 888  88b  d88P     88b8  b88    888b. 8888b      \n" +
+                    "           8888  888  888 .d888888 888  888   8888   8888   8880b.d888.  8888b  8888 \n" +
+                    "           8888  888  888 888  888 888         Y88b 8888    888          8888b  8888\n" +
+                    "           8888  888  888  Y888888 888          Y88888      8888888888b  8888b888888\n" +
+                    "                                                                                         \n" +
+                    "                            By The Avengers: End Game\n");
 
             Console.WriteLine("Let's Play Hangman: The Marvel Edition!!!\n\n");
             Random random = new Random();
