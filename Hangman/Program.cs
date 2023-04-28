@@ -142,7 +142,8 @@ namespace Hangman
                 Console.Write("\u0305 ");
                 if (c == ' ')
                 {
-
+                  string  lineChange = surpriseWord.Replace("_", " ");
+                    Console.WriteLine(lineChange);
                 }
             }
         }
