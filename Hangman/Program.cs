@@ -10,10 +10,10 @@ namespace Hangman
     internal class Program
     {
         // creating metod to output a conditional response if te user needs to tryagain after a wrong response
-        private static void DisplayHangman(int wrongChoice)
+        private static void DisplayHangman(int incorrectGuess)
         {
             //will display the hangman with each incorrect 'wrong choice' guess
-            if (wrongChoice == 0)
+            if (incorrectGuess == 0)
             {
                 Console.WriteLine("\n|---+");
                 Console.WriteLine("|    ");
@@ -24,7 +24,7 @@ namespace Hangman
                 Console.WriteLine("+-------+");
                 Console.WriteLine("\n");
             }
-            else if (wrongChoice == 1)
+            else if (incorrectGuess == 1)
             {
                 Console.WriteLine("|----+");
                 Console.WriteLine("|    |");
@@ -36,7 +36,7 @@ namespace Hangman
                 Console.WriteLine("\n");
             }
 
-            else if (wrongChoice == 2)
+            else if (incorrectGuess == 2)
             {
                 Console.WriteLine("|----+");
                 Console.WriteLine("|    |");
@@ -48,7 +48,7 @@ namespace Hangman
                 Console.WriteLine(" \n");
             }
 
-            else if (wrongChoice == 3)
+            else if (incorrectGuess == 3)
             {
                 Console.WriteLine("|----+");
                 Console.WriteLine("|    |");
@@ -60,7 +60,7 @@ namespace Hangman
                 Console.WriteLine(" \n");
             }
 
-            else if (wrongChoice == 4)
+            else if (incorrectGuess == 4)
             {
                 Console.WriteLine("|----+");
                 Console.WriteLine("|    |");
@@ -72,7 +72,7 @@ namespace Hangman
                 Console.WriteLine(" \n");
             }
 
-            else if (wrongChoice == 5)
+            else if (incorrectGuess == 5)
             {
                 Console.WriteLine("|----+");
                 Console.WriteLine("|    |");
@@ -84,7 +84,7 @@ namespace Hangman
                 Console.WriteLine(" \n");
             }
 
-            else if (wrongChoice == 6)
+            else if (incorrectGuess == 6)
             {
                 Console.WriteLine("|----+");
                 Console.WriteLine("|    |");
