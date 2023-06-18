@@ -102,7 +102,7 @@ namespace Hangman
         private static int DisplayGuess(List<char> guessedLetters, String surpriseWord)
         {
             int incrementor = 0;
-            int correctGuess = 0;
+            int correctGuessInt = 0;
             Console.Write("\r\n");
 
             //create a loop method that iterates through each character of the surpriseWord string
@@ -112,7 +112,7 @@ namespace Hangman
                 if (c == '_' || c == '-')
                 {
 
-                    correctGuess++;
+                    correctGuessInt++;
 
                 }
 
@@ -120,7 +120,7 @@ namespace Hangman
                 {
                     Console.Write(c + " ");
 
-                    correctGuess++;
+                    correctGuessInt++;
 
                 }
                 else
@@ -129,7 +129,7 @@ namespace Hangman
                 }
                 incrementor++;
             }
-            return correctGuess;
+            return correctGuessInt;
         }
         //display lines underneath words to show words that are left to be guessed
 
