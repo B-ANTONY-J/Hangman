@@ -101,7 +101,8 @@ namespace Hangman
         //method to display character guess and display generated random word from list
         private static int DisplayGuess(List<char> guessedLetters, String surpriseWord)
         {
-            int incrementor = 0;
+            /*int incrementor = 0;
+            Console.WriteLine(incrementor);*/
             int correctGuessInt = 0;
             Console.Write("\r\n");
 
@@ -109,13 +110,13 @@ namespace Hangman
             foreach (char c in surpriseWord)
             {
                 //the first conditional statement iterates past a character space or character hyphen within the string
+
                 if (c == '_' || c == '-')
                 {
 
                     correctGuessInt++;
 
                 }
-
                 if (guessedLetters.Contains(c))
                 {
                     Console.Write(c + " ");
@@ -127,7 +128,7 @@ namespace Hangman
                 {
                     Console.Write("  ");
                 }
-                incrementor++;
+                // incrementor++;
             }
             return correctGuessInt;
         }
@@ -221,7 +222,7 @@ namespace Hangman
 
             //created string to wordBank index selection and to ensure all entries print to lower case along with replacing char space with an underscore
             String surpriseWord = wordBank[wordBankIndex].ToUpper().Replace(' ', '_');
-
+            Console.WriteLine(surpriseWord);
             foreach (char c in surpriseWord)
             {
                 Console.Write("_ ");
