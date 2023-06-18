@@ -9,6 +9,7 @@ namespace Hangman
 {
     internal class Program
     {
+        const int EQUAL_TO_SIX = 6;
         // creating metod to output a conditional response if te user needs to tryagain after a wrong response
         private static void DisplayHangman(int incorrectGuess)
         {
@@ -234,7 +235,7 @@ namespace Hangman
 
 
             //while loop to initiate game play until correct guess or exceeded 6 attempts
-            while (wrongGuess != 6 && correctGuessLetters != wordLengthToGuess)
+            while (wrongGuess != EQUAL_TO_SIX && correctGuessLetters != wordLengthToGuess)
             {
                 Console.Write("\nAll Letters Guessed: ");
                 foreach (char correct in correctGuess)
@@ -292,7 +293,7 @@ namespace Hangman
                         Console.Write("\r\n");
                         DisplayLines(surpriseWord);
 
-                        if (wrongGuess == 6)
+                        if (wrongGuess == EQUAL_TO_SIX)
                         {
                             string endingString = surpriseWord.Replace('_', ' ').ToUpper();
                             Console.Write($"\r\nGame over - Better luck next time. Your word was {endingString}!\n");
