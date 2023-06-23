@@ -9,7 +9,7 @@ namespace Hangman
 {
     internal class Program
     {
-        const int EQUAL_TO_SIX = 6;
+        const int MAX_ATTEMPTS = 6;
         // creating metod to output a conditional response if te user needs to tryagain after a wrong response
         private static void DisplayHangman(int incorrectGuess)
         {
@@ -101,8 +101,7 @@ namespace Hangman
         //method to display character guess and display generated random word from list
         private static int DisplayGuess(List<char> guessedLetters, String surpriseWord)
         {
-            /*int incrementor = 0;
-            Console.WriteLine(incrementor);*/
+            
             int correctGuessInt = 0;
             Console.Write("\r\n");
 
@@ -128,7 +127,7 @@ namespace Hangman
                 {
                     Console.Write("  ");
                 }
-                // incrementor++;
+                
             }
             return correctGuessInt;
         }
@@ -236,7 +235,7 @@ namespace Hangman
 
 
             //while loop to initiate game play until correct guess or exceeded 6 attempts
-            while (wrongGuess != EQUAL_TO_SIX && correctGuessLetters != wordLengthToGuess)
+            while (wrongGuess != MAX_ATTEMPTS && correctGuessLetters != wordLengthToGuess)
             {
                 Console.Write("\nAll Letters Guessed: ");
                 foreach (char correct in correctGuess)
@@ -254,6 +253,7 @@ namespace Hangman
                     DisplayHangman(wrongGuess);
                     correctGuessLetters = DisplayGuess(correctGuess, surpriseWord);
                     DisplayLines(surpriseWord);
+                   
                 }
 
                 else
@@ -294,7 +294,7 @@ namespace Hangman
                         Console.Write("\r\n");
                         DisplayLines(surpriseWord);
 
-                        if (wrongGuess == EQUAL_TO_SIX)
+                        if (wrongGuess == MAX_ATTEMPTS)
                         {
                             string endingString = surpriseWord.Replace('_', ' ').ToUpper();
                             Console.Write($"\r\nGame over - Better luck next time. Your word was {endingString}!\n");
