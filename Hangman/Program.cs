@@ -102,7 +102,7 @@ namespace Hangman
         private static int DisplayGuess(List<char> guessedLetters, String surpriseWord)
         {
             
-            int correctGuessInt = 0;
+            int correctGuess = 0;
             Console.Write("\r\n");
 
             //create a loop method that iterates through each character of the surpriseWord string
@@ -113,14 +113,14 @@ namespace Hangman
                 if (c == '_' || c == '-')
                 {
 
-                    correctGuessInt++;
+                    correctGuess++;
 
                 }
                 if (guessedLetters.Contains(c))
                 {
                     Console.Write(c + " ");
 
-                    correctGuessInt++;
+                    correctGuess++;
 
                 }
                 else
@@ -129,7 +129,7 @@ namespace Hangman
                 }
                 
             }
-            return correctGuessInt;
+            return correctGuess;
         }
         //display lines underneath words to show words that are left to be guessed
 
@@ -230,7 +230,7 @@ namespace Hangman
             int wordLengthToGuess = surpriseWord.Length;
             int wrongGuess = 0;
             //create a list to keep track of correct letters guessed
-            List<char> correctGuess = new List<char>();
+            List<char> guessedLetters = new List<char>();
             int correctGuessLetters = 0;
 
 
@@ -238,7 +238,7 @@ namespace Hangman
             while (wrongGuess != MAX_ATTEMPTS && correctGuessLetters != wordLengthToGuess)
             {
                 Console.Write("\nLetters guessed so far: ");
-                foreach (char correct in correctGuess)
+                foreach (char correct in guessedLetters)
                 {
                     Console.Write(correct + " ");
                 }
@@ -246,12 +246,12 @@ namespace Hangman
                 Console.Write("\nGuess a letter: ");
                 char letterDisplay = Console.ReadLine().ToUpper()[0];
 
-                if (correctGuess.Contains(letterDisplay))
+                if (guessedLetters.Contains(letterDisplay))
                 {
 
                     Console.Write("\r\nUh Oh - You've seemed to have selected this letter already.  Try Again!!!");
                     DisplayHangman(wrongGuess);
-                    correctGuessLetters = DisplayGuess(correctGuess, surpriseWord);
+                    correctGuessLetters = DisplayGuess(guessedLetters, surpriseWord);
                     DisplayLines(surpriseWord);
                    
                 }
@@ -271,9 +271,9 @@ namespace Hangman
                     if (letterIsCorrect)
                     {
                         DisplayHangman(wrongGuess);
-                        correctGuess.Add(letterDisplay);
+                        guessedLetters.Add(letterDisplay);
                         //surpriseWord;
-                        correctGuessLetters = DisplayGuess(correctGuess, surpriseWord);
+                        correctGuessLetters = DisplayGuess(guessedLetters, surpriseWord);
                         Console.Write("\r\n");
                         DisplayLines(surpriseWord);
 
@@ -288,9 +288,9 @@ namespace Hangman
                     else
                     {
                         wrongGuess++;
-                        correctGuess.Add(letterDisplay);
+                        guessedLetters.Add(letterDisplay);
                         DisplayHangman(wrongGuess);
-                        correctGuessLetters = DisplayGuess(correctGuess, surpriseWord);
+                        correctGuessLetters = DisplayGuess(guessedLetters, surpriseWord);
                         Console.Write("\r\n");
                         DisplayLines(surpriseWord);
 
