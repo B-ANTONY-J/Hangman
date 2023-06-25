@@ -237,7 +237,7 @@ namespace Hangman
             //while loop to initiate game play until correct guess or exceeded 6 attempts
             while (wrongGuess != MAX_ATTEMPTS && correctGuessLetters != wordLengthToGuess)
             {
-                Console.Write("\nAll Letters Guessed: ");
+                Console.Write("\nLetters guessed so far: ");
                 foreach (char correct in correctGuess)
                 {
                     Console.Write(correct + " ");
