@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using static System.Random;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Hangman
 {
@@ -98,14 +99,13 @@ namespace Hangman
 
             }
         }
-        //method to display character guess and display generated random word from list
-        private static int DisplayGuess(List<char> guessedLetters, String surpriseWord)
-        {
-            
-            int correctGuess = 0;
-            Console.Write("\r\n");
 
-            //create a loop method that iterates through each character of the surpriseWord string
+        //// test code test block
+        ///
+
+        ///tripple lines added for test removal methode
+        /*public static int correctGuessedLetters(char correctLetters, String surpriseWord)
+        {
             foreach (char c in surpriseWord)
             {
                 //the first conditional statement iterates past a character space or character hyphen within the string
@@ -127,12 +127,131 @@ namespace Hangman
                 {
                     Console.Write("  ");
                 }
-                
+
             }
             return correctGuess;
-        }
-        //display lines underneath words to show words that are left to be guessed
 
+        }*/
+        //method to display character guess and display generated random word from list
+        /* private static int DisplayGuess(List<char> guessedLetters, String surpriseWord)
+         {
+
+             int correctGuess = 0;
+             Console.Write("\r\n");
+
+             //create a loop method that iterates through each character of the surpriseWord string
+             foreach (char c in surpriseWord)
+             {
+                 //the first conditional statement iterates past a character space or character hyphen within the string
+
+                 if (c == '_' || c == '-')
+                 {
+
+                     correctGuess++;
+
+                 }
+                 if (guessedLetters.Contains(c))
+                 {
+                     Console.Write(c + " ");
+
+                     correctGuess++;
+
+                 }
+                 else
+                 {
+                     Console.Write("  ");
+                 }
+
+             }
+             return correctGuess;
+         }*/
+
+
+
+
+        ////  end of TEST Block
+
+
+
+        //New Method 1 DisplaySurpriseWord
+        //method to display character guess and display generated random word from list
+        private static int DisplaySurpriseWord(List<char> guessedLetters, String surpriseWord)
+        {
+
+            int correctGuess = 0;
+            Console.Write("\r\n");
+
+            for (int i = 0; i < surpriseWord.Length - 1; i++)
+            {
+
+                if (surpriseWord[i] == '_' || surpriseWord[i] == '-')
+                {
+                    Console.Write(surpriseWord[i] + " ");
+
+                    correctGuess++;
+
+                }
+                if (guessedLetters.Contains(surpriseWord[i]))
+                {
+                    Console.Write(surpriseWord[i] + " ");  
+                }
+                
+            }
+
+
+            return correctGuess;
+        }
+
+
+        //New Method 2 DisplayGuessedLetters
+        /// this method i for surprise word
+        //method to display character guess and display generated random word from list
+        private static int DisplayGuessedLetters(List<char> guessedLetters)
+        {
+            string lettersToCompare = "abcdefghijklmnopqrstuvwxyz";
+            
+            char[] charArr = lettersToCompare.ToCharArray();
+
+            //var compareLetters = Convert.ToChar(lettersToCompare);
+
+            //letterCompare.Add(charArr);
+
+            int correctGuess = 0;
+            Console.Write("\r\n");
+            
+            
+
+            foreach (char ch in charArr)
+            {
+                //create a loop method that iterates through each character of the surpriseWord string
+                if (guessedLetters.Contains('_') || guessedLetters.Contains('-'))
+                {
+
+                    correctGuess++;
+
+                }
+
+                if (guessedLetters.Contains(ch))
+                {
+                    Console.Write(guessedLetters + " ");
+
+                    correctGuess++;
+
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
+            }
+            return correctGuess;
+            
+           
+        }
+
+
+
+
+        //display lines underneath words to show words that are left to be guessed
         private static void DisplayLines(String surpriseWord)
         {
             Console.Write("\r");
@@ -231,12 +350,26 @@ namespace Hangman
             int wrongGuess = 0;
             //create a list to keep track of correct letters guessed
             List<char> guessedLetters = new List<char>();
-            int correctGuessLetters = 0;
+            int correctGuessLettersA = 0;
+            int correctGuessWordB = 0;
 
+            //Moved conditional statement from line 334 outside of while loop since code format can be executed here
+            if (wrongGuess == MAX_ATTEMPTS)
+            {
+                string endingString = surpriseWord.Replace('_', ' ').ToUpper();
+                Console.Write($"\r\nGame over - Better luck next time. Your word was {endingString}!\n");
+            }
 
             //while loop to initiate game play until correct guess or exceeded 6 attempts
-            while (wrongGuess != MAX_ATTEMPTS && correctGuessLetters != wordLengthToGuess)
+            while (wrongGuess < MAX_ATTEMPTS)
             {
+                ///Congratulates the user the game has concluded when teh correct guesses equals the correct word length
+                if (correctGuessLettersA == wordLengthToGuess)
+                {
+                    Console.Write("\r\nExcellent job, You WON!!!\n");
+                    break;
+                }
+
                 Console.Write("\nLetters guessed so far: ");
                 foreach (char correct in guessedLetters)
                 {
@@ -244,16 +377,20 @@ namespace Hangman
                 }
 
                 Console.Write("\nGuess a letter: ");
-                char letterDisplay = Console.ReadLine().ToUpper()[0];
+                char newGuessedLetter = Console.ReadLine().ToUpper()[0];
 
-                if (guessedLetters.Contains(letterDisplay))
+                if (guessedLetters.Contains(newGuessedLetter))
                 {
 
                     Console.Write("\r\nUh Oh - You've seemed to have selected this letter already.  Try Again!!!");
                     DisplayHangman(wrongGuess);
-                    correctGuessLetters = DisplayGuess(guessedLetters, surpriseWord);
+                    //correctGuessLettersR = DisplayGuess(guessedLetters, surpriseWord);
+                    correctGuessLettersA = DisplayGuessedLetters(guessedLetters);
+                    //correctGuessWordB = DisplaySurpriseWord(surpriseWord);
+                    DisplaySurpriseWord(guessedLetters, surpriseWord);
+                    DisplayGuessedLetters(guessedLetters);
                     DisplayLines(surpriseWord);
-                   
+
                 }
 
                 else
@@ -263,45 +400,40 @@ namespace Hangman
                     //loop through surprise word to see if it equals guessed words
                     for (int i = 0; i < surpriseWord.Length; i++)
                     {
-                        if (letterDisplay == surpriseWord[i])
+                        if (newGuessedLetter == surpriseWord[i])
                         {
                             letterIsCorrect = true;
                         }
                     }
                     if (letterIsCorrect)
                     {
+                        guessedLetters.Add(newGuessedLetter);
                         DisplayHangman(wrongGuess);
-                        guessedLetters.Add(letterDisplay);
                         //surpriseWord;
-                        correctGuessLetters = DisplayGuess(guessedLetters, surpriseWord);
+                        //correctGuessLettersR = DisplayGuess(guessedLetters, surpriseWord); //TODO: seperate into 2 methods
+                        DisplaySurpriseWord(guessedLetters, surpriseWord);
+                        DisplayGuessedLetters(guessedLetters);
+
                         Console.Write("\r\n");
                         DisplayLines(surpriseWord);
 
-                        ///Congratulates the user the game has concluded when teh correct guesses equals the correct word length
-                        if (correctGuessLetters == wordLengthToGuess)
-                        {
-                            Console.Write("\r\nExcellent job, You WON!!!\n");
-                        }
+
 
                     }
                     //when the user guess is wrong
                     else
                     {
                         wrongGuess++;
-                        guessedLetters.Add(letterDisplay);
+                        /*guessedLetters.Add(newGuessedLetter);
                         DisplayHangman(wrongGuess);
-                        correctGuessLetters = DisplayGuess(guessedLetters, surpriseWord);
+                        correctGuessLettersR = DisplayGuess(guessedLetters, surpriseWord);*/
                         Console.Write("\r\n");
                         DisplayLines(surpriseWord);
 
-                        if (wrongGuess == MAX_ATTEMPTS)
-                        {
-                            string endingString = surpriseWord.Replace('_', ' ').ToUpper();
-                            Console.Write($"\r\nGame over - Better luck next time. Your word was {endingString}!\n");
-                        }
                     }
 
                 }
+                //return newGuessedLetter;
 
             }
             Console.WriteLine("\nThank Your for Playing!\nPress any key to exit...\n");
@@ -309,5 +441,7 @@ namespace Hangman
             Console.ReadKey();
 
         }
+
+
     }
 }
